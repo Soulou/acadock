@@ -10,7 +10,8 @@
     "stylus": "~0.32.1",
     "coffee-script": "~1.6.2",
     "socket.io": "~0.9.13",
-    "request": "~2.21.0"
+    "request": "~2.21.0",
+    "underscore": "~1.4.4"
   },
   "devDependencies": {},
   "scripts": {
