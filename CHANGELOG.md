@@ -6,6 +6,6 @@ Containers management
 
 > Start : Saturday 00:00
 
-* Create
-* List
-* Delete
+* Create  POST /containers /create
+* List    GET /containers /ps
+* Delete  DELETE /containers /:id
