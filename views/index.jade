@@ -6,3 +6,9 @@ html(lang="fr")
     != css("application")
   body
     h1 Acadock
+
+    ul#containers
+      each container in containers
+        li.container
+          = container.id
+
