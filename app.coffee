@@ -12,12 +12,11 @@ io = require('socket.io').listen server
 Container = require './lib/models/container'
 
 app.get '/', (req, res) ->
-  Container.findAll (container, err) ->
-    if err != null
-      res.render 'index.jade'
-    else 
+  Container.findAll (containers, err) ->
+    if !err
+      res.render 'index.jade', { containers: containers }
+    else
       res.status(400)
-
-
+      res.send(err)
 
 server.listen(process.env.PORT || 3000)
