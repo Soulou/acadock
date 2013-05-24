@@ -9,16 +9,7 @@ server = http.createServer app
 io = require('socket.io').listen server
 
 # Acadock classes 
-
 Container = require './lib/models/container'
-
-
-
-logger = (req, res, next) ->
-  console.log req.body
-  next()
-
-app.use logger
 
 app.get '/', (req, res) ->
   Container.findAll (container, err) ->
