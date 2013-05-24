@@ -1,0 +1,30 @@
+{
+  "name": "acadock",
+  "version": "0.0.1",
+  "description": "Maxime - Leo",
+  "main": "app.js",
+  "dependencies": {
+    "express": "~3.1.0",
+    "jade": "~0.28.2",
+    "connect-assets": "~2.4.0",
+    "stylus": "~0.32.1",
+    "coffee-script": "~1.6.2",
+    "socket.io": "~0.9.13"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/barodeur/ragots.git"
+  },
+  "engines": {
+    "node": "0.8.x",
+    "npm": "1.1.x"
+  },
+  "author": "",
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "gitHead": "19d0eef57c6657ae658fcabfb020db5c3c6de1d8"
+}
