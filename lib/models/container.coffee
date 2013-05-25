@@ -30,10 +30,10 @@ class Container
     request.post
       url: Docker.getUrl "create"
       form:
-        Hostname: params[hostname] || ""
-        User: params[user] || ""
+        Hostname: params.Hostname|| ""
+        User: params.User|| ""
         Memory: 0
-        MemorySwap: 0 
+        MemorySwap: 0
         AttachStdin: false
         AttachStdout: true
         AttachStderr: true
@@ -42,15 +42,17 @@ class Container
         OpenStdin: false
         StdinOnce: false
         Env: null
-        Cmd: params[command]
+        Cmd: [params.Command]
         Dns: null
-        Image: base
+        Image: "base"
         Volumes: {}
         VolumesFrom: ""
 
       (err, response, body) ->
         if err || response.statusCode != 200
           console.log(err)
+          console.log(response)
+          console.log(body)
           cb(null, err)
         else
           console.log(err)
