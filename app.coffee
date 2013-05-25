@@ -10,13 +10,15 @@ io = require('socket.io').listen server
 
 # Acadock classes
 
-docker = require './lib/docker'
 Container = require './lib/models/container'
 urlHelper = require './lib/helpers/urlHelper'
+websocket = require './lib/websocket'
+
+
 app.get '/', (req, res) ->
   Container.findAll (containers, err) ->
     if !err
-      res.render 'index.jade', { containers: containers, urlHelper: urlHelper, docker: docker}
+      res.render 'index.jade', { containers: containers }
     else
       res.status 400
       res.send(err)
@@ -36,6 +38,7 @@ app.post '/containers/create', (req,res) ->
         res.redirect('/')
 
 app.get '/containers/:name', (req, res) ->
+  websocket io, req.params.name
   Container.find req.params.name, (container, err) ->
     if !err
       res.render 'containers/show.jade', {container: container}

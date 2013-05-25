@@ -1,11 +1,11 @@
 _ = require "underscore"
-Docker = require "../docker"
+endpoint = require "../endpoints"
 request = require "request"
 
 class Container
   @find: (name, cb) ->
     request.get
-      url: Docker.getUrl "inspect", name
+      url: endpoint.getUrl "inspect", "docker", name
       (err, response, body) ->
         if response.statusCode != 200
           cb null, body
@@ -15,7 +15,7 @@ class Container
 
   @findAll: (cb) ->
     request.get
-      url: Docker.getUrl "list"
+      url: endpoint.getUrl "list", "docker"
       (err, response, body) ->
         if response.statusCode != 200
           cb null, body
@@ -25,7 +25,7 @@ class Container
 
   @create: (params, cb) ->
     request.post
-      url: Docker.getUrl "create"
+      url: endpoint.getUrl "create", "docker"
       form:
         Hostname: params.Hostname|| ""
         User: params.User|| ""
