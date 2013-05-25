@@ -31,11 +31,11 @@ app.get '/containers/new', (req, res) ->
 
 app.post '/containers/create', (req,res) ->
   console.log("Create container")
-  if !req.params.container
+  if !req.body.container
     res.status 422
     res.end()
   else
-    Container.create req.params.container, (container) ->
+    Container.create req.body.container, (container, err) ->
       if !container
         res.redirect('/containers/new')
       else

@@ -26,36 +26,30 @@ class Container
   @create: (params, cb) ->
     request.post
       url: endpoint.getUrl "create", "docker"
-      form:
-        Hostname: params.Hostname|| ""
-        User: params.User|| ""
-        Memory: 0
-        MemorySwap: 0
-        AttachStdin: false
-        AttachStdout: true
-        AttachStderr: true
-        PortSpecs: null
-        Tty: false
-        OpenStdin: false
-        StdinOnce: false
-        Env: null
-        Cmd: [params.Command]
-        Dns: null
-        Image: "base"
-        Volumes: {}
-        VolumesFrom: ""
-
+      json:
+        "Hostname": params.hostname || ""
+        "User": params.user || ""
+        "Memory": 0
+        "MemorySwap": 0
+        "AttachStdin": false
+        "AttachStdout": false
+        "AttachStderr": false
+        "PortSpecs": null
+        "Tty": false
+        "OpenStdin": false
+        "StdinOnce": false
+        "Env": null
+        "Cmd": [params.command]
+        "Dns": null
+        "Image": "base"
+        "Volumes": {}
+        "VolumesFrom": ""
       (err, response, body) ->
-        if err || response.statusCode != 200
-          console.log(err)
-          console.log(response)
-          console.log(body)
+        if err || response.statusCode != 201
+          console.log response.statusCode + " : " + util.inspect(body, false, null)
           cb(null, err)
         else
-          console.log(err)
-          console.log(response)
-          console.log(body)
-          docker_container = JSON.parse(body)
-          cb(container, null)
+          cb(body, null)
+
 
 module.exports = Container
