@@ -21,7 +21,11 @@ html(lang="fr")
       .charts
         .charts-container
           p CPU USAGE
-            canvas#chartcanvas
           p MEMORY USAGE
-            canvas#chartmemcanvas
+          
+          .smoothie-graph
+            .cpu-graph
+              canvas#chartcanvas
+            .mem-graph
+              canvas#chartmemcanvas
 
