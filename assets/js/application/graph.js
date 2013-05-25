@@ -1,10 +1,30 @@
 $(function() {
-    var smoothie = new SmoothieChart();
-    smoothie.streamTo(document.getElementById("chartcanvas"));
+    var smoothiecpu = new SmoothieChart({minValue: 0.0, 
+                                        maxValue: 100.0,
+                                        millisPerPixel:50,
+                                        grid:{strokeStyle:'#4f4f4f',
+                                        sharpLines:true, millisPerLine:10000}
+    });
+    var smoothiemem = new SmoothieChart({minValue: 0.0,
+                                         maxValue: 100.0,
+                                         millisPerPixel:50,
+                                         grid:{strokeStyle: '#4f4f4f',
+                                         sharpLines:true, millisPerLine:10000}
+    });
+
+    smoothiecpu.streamTo(document.getElementById("chartcanvas"));
     line1 = new TimeSeries();
-    smoothie.addTimeSeries(line1);
+    smoothiecpu.addTimeSeries(line1);
     updateCpuChartData = function(percentage)  {
       console.log(percentage);
       line1.append(new Date().getTime(), percentage);
+    }
+
+    smoothiemem.streamTo(document.getElementById("chartmemcanvas"));
+    line2 = new TimeSeries();
+    smoothiemem.addTimeSeries(line2);
+    updateMemChartData = function(percentage){
+      console.log(percentage);
+      line2.append(new Date().getTime(), percentage);
     }
 });
