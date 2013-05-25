@@ -54,5 +54,15 @@ class Container
         else
           cb(body, null)
 
+  @destroy: (name, cb) ->
+    console.log endpoint.getUrl "destroy", "docker", name
+    request.del
+      url: endpoint.getUrl "destroy", "docker", name
+      (err, response, body) ->
+        if err || response.statusCode != 204
+          console.log response.statusCode + " : " + util.inspect(body, false, null)
+          cb(body)
+        else
+          cb(null)
 
 module.exports = Container

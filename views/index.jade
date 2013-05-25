@@ -12,11 +12,14 @@ html(lang="fr")
 
     ul#containers
       each container in containers
-        .container-info
+        li.container-info
           if container.Hostname
             - containerStr = "Hostname " + container.Hostname
           else
             - containerStr = "ID " + container.Id 
           a(href="/containers/" + container.Id)
             = containerStr
+          span.pull-right
+            a(class="container-destroy", href="/containers/" + container.Id)
+              button Destroy
 
