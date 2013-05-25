@@ -18,12 +18,10 @@ class Container
       url: Docker.getUrl "list"
       (err, response, body) ->
         if response.statusCode != 200
-          cb(null, err)
+          cb null, err
         else
           docker_containers = JSON.parse(body)
-          containers = _.map docker_containers, (container) ->
-            new Container container
-          cb(containers, null)
+          cb(docker_containers, null)
 
   @create: (params, cb) ->
     request.post
@@ -58,7 +56,6 @@ class Container
           console.log(response)
           console.log(body)
           docker_container = JSON.parse(body)
-          container = new Container
           cb(container, null)
 
 module.exports = Container
