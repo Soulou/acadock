@@ -4,7 +4,7 @@ request = require "request"
 
 
 class Container
-  constructor: (id, image, status, created)->
+  constructor: (id, image, status, created, user, hostname, command) ->
     @id = id
     @image = image
     @status = status
