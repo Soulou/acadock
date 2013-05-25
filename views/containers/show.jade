@@ -18,17 +18,16 @@ html(lang="fr")
       li= "Image " + container.Image
       li= "CMD " + container.Config.Cmd
 
-    div 
+    div#real-time-container 
       .charts
         .charts-container
-          p CPU USAGE
-          p MEMORY USAGE
-          
           .smoothie-graph
             .cpu-graph
+              p CPU USAGE
               canvas#chartcanvas
             .mem-graph
+              p MEMORY USAGE
               canvas#chartmemcanvas
-    pre#container-attachment
-      code
+      pre#container-attachment
+        code
 
