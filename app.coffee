@@ -5,7 +5,6 @@ app.use express.bodyParser()
 app.use require('connect-assets')()
 
 http = require 'http'
-request = require 'request'
 server = http.createServer app
 io = require('socket.io').listen server
 
@@ -21,20 +20,20 @@ app.get '/', (req, res) ->
     else
       res.status(400)
       res.send(err)
+
 app.get '/containers/new', (req, res) ->
     res.render 'containers/new.jade'
 
 app.post '/containers/create', (req,res) ->
-  request.post docker.getUrl("create"),
-    (err, response, body) ->
-      if err
-        console.log err
-        res.Status 500
+  if !req.body.container
+    res.status(422)
+    res.end()
+  else
+    Container.create req.body.container, (container) ->
+      if !container
+        res.redirect('/containers/new')
       else
-        console.log(err)
-        console.log(response)
-        console.log(body)
-        res.send(body)
+        res.redirect('/')
 
 
 server.listen(process.env.PORT || 3000)

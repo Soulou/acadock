@@ -23,15 +23,23 @@ class Container
           containers = _.map docker_containers, (container) ->
             new Container container.Id, container.Image, container.Status, container.Created
           cb(containers, null)
-  @create: (cb) ->
-    request.post Docker.getUrl("create"),
+
+  @create: (params, cb) ->
+    request.post
+      url: Docker.getUrl "create"
+      form:
+        Hostname: params[hostname] || ""
+        User: params[user] || ""
       (err, response, body) ->
-        if response.statusCode != 200
+        if err || response.statusCode != 200
+          console.log(err)
           cb(null, err)
         else
-          docker_containers = JSON.parse(body)
-          containers = _.map docker_containers, (container) ->
-          new Container container.Hostname, container.Command
-          cb(containers,null)
+          console.log(err)
+          console.log(response)
+          console.log(body)
+          docker_container = JSON.parse(body)
+          container = new Container
+          cb(container, null)
 
 module.exports = Container
