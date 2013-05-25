@@ -1,6 +1,9 @@
 _ = require "underscore"
 endpoint = require "../endpoints"
 request = require "request"
+util = require 'util'
+fs = require 'fs'
+
 
 class Container
   @find: (name, cb) ->

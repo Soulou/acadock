@@ -1,8 +1,10 @@
 mem_stream = require './websocket/mem'
 cpu_stream = require './websocket/cpu'
+out_stream = require './websocket/out'
 
 data_stream = (socket, name) ->
   setTimeout ->
+    out_stream socket, name
     mem_stream socket, name
     cpu_stream socket, name
     data_stream socket, name
@@ -11,5 +13,6 @@ data_stream = (socket, name) ->
 
 module.exports = (io, name) ->
   io.sockets.on 'connection', (socket) ->
-    data_stream socket, name
-    
+    timer = data_stream socket, name
+    socket.on "disconnect", ->
+      clearTimeout(timer)

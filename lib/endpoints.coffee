@@ -1,4 +1,5 @@
 endpoints_info = {
+
   "lxcresources" : {
     "url" : "http://" + process.env.LXC_RESOURCES_HOST,
     "port" : process.env.LXC_RESOURCES_PORT,
@@ -13,7 +14,9 @@ endpoints_info = {
     "endpoints" : {
       "list" : "/containers/ps?all=1",
       "inspect" : "/containers/#NAME#/json",
-      "create" : "/containers/create"
+      "create" : "/containers/create",
+      "destroy" : "/containers/#NAME#",
+      "attach" : "/containers/#NAME#/attach?logs=1&stream=0&stdout=1&stderr=1"
     }
   }
 }

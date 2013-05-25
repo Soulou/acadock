@@ -11,7 +11,8 @@ html(lang="fr")
     h1="Acadock " + container.Config.Hostname + " Container"
 
     ul.container-info#container-config
-      li= "ID " + container.Id
+      li ID&nbsp;
+        span#container-id=container.Id
       li= "Name " + container.Config.Hostname
       li= "Created " + container.Created
       li= "Image " + container.Image
@@ -28,4 +29,6 @@ html(lang="fr")
               canvas#chartcanvas
             .mem-graph
               canvas#chartmemcanvas
+    pre#container-attachment
+      code
 
