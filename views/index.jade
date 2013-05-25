@@ -2,9 +2,9 @@ doctype 5
 html(lang="fr")
   head
     title Acadock
-    != js("zepto")
     != js("application")
     != css("application")
+    script(src='/socket.io/socket.io.js')
   body
     h1 Acadock
       a(href="/containers/new")
