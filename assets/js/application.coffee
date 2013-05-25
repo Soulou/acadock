@@ -1,3 +1,3 @@
 #= require zepto
-#= require chart
+#= require smoothie
 #= require_tree application
