@@ -32,6 +32,22 @@ class Container
       form:
         Hostname: params[hostname] || ""
         User: params[user] || ""
+        Memory: 0
+        MemorySwap: 0 
+        AttachStdin: false
+        AttachStdout: true
+        AttachStderr: true
+        PortSpecs: null
+        Tty: false
+        OpenStdin: false
+        StdinOnce: false
+        Env: null
+        Cmd: params[command]
+        Dns: null
+        Image: base
+        Volumes: {}
+        VolumesFrom: ""
+
       (err, response, body) ->
         if err || response.statusCode != 200
           console.log(err)
