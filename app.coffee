@@ -25,11 +25,11 @@ app.get '/containers/new', (req, res) ->
     res.render 'containers/new.jade'
 
 app.post '/containers/create', (req,res) ->
-  if !req.body.container
+  if !req.params.container
     res.status 422
     res.end()
   else
-    Container.create req.body.container, (container) ->
+    Container.create req.params.container, (container) ->
       if !container
         res.redirect('/containers/new')
       else
