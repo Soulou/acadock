@@ -7,6 +7,7 @@ app.use require('connect-assets')()
 http = require 'http'
 server = http.createServer app
 io = require('socket.io').listen server
+io.set "log level", 1
 
 # Acadock classes
 
