@@ -5,13 +5,14 @@ request = require "request"
 
 class Container
   constructor: (params) ->
-    @id = params[id]
-    @image = params[image]
-    @status = params[status]
-    @created = new Date parseInt(params[created])
-    @user = params[user]
-    @hostname = params[hostname]
-    @command = params[command]
+    console.log(params)
+    @id = params.Id
+    @image = params.Image
+    @status = params.Status
+    @created = new Date parseInt(params.Created)
+    @user = params.User
+    @hostname = params.Hostname
+    @command = params.Command
 
   @findAll: (cb) ->
     request.get
@@ -22,7 +23,7 @@ class Container
         else
           docker_containers = JSON.parse(body)
           containers = _.map docker_containers, (container) ->
-            new Container container.Id, container.Image, container.Status, container.Created
+            new Container container
           cb(containers, null)
 
   @create: (params, cb) ->

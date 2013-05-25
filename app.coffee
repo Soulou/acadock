@@ -22,7 +22,7 @@ app.get '/', (req, res) ->
       res.send(err)
 
 app.get '/containers/new', (req, res) ->
-    res.render 'containers/new.jade'
+    res.render 'containers/new'
 
 app.post '/containers/create', (req,res) ->
   if !req.body.container
