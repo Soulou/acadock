@@ -5,7 +5,6 @@ html(lang="fr")
     != js("zepto")
     != js("application")
     != css("application")
-    
   body
     h1 Acadock
       a(href="/containers/new")
@@ -14,8 +13,8 @@ html(lang="fr")
     ul#containers
       each container in containers
         .info
-          li= "ID " + container.id
-          li= "Image" + container.image
-          li= "Created" + container.created
-          li= "Status" +  container.status
+          if container.Hostname
+            li= "Hostname " + container.Hostname
+          else
+            li= "ID " + container.id 
 

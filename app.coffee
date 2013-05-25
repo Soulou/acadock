@@ -18,7 +18,7 @@ app.get '/', (req, res) ->
     if !err
       res.render 'index.jade', { containers: containers, urlHelper: urlHelper, docker: docker}
     else
-      res.status(400)
+      res.status 400
       res.send(err)
 
 app.get '/containers/new', (req, res) ->
@@ -26,7 +26,7 @@ app.get '/containers/new', (req, res) ->
 
 app.post '/containers/create', (req,res) ->
   if !req.body.container
-    res.status(422)
+    res.status 422
     res.end()
   else
     Container.create req.body.container, (container) ->
@@ -34,6 +34,11 @@ app.post '/containers/create', (req,res) ->
         res.redirect('/containers/new')
       else
         res.redirect('/')
-
+app.get '/containers/:name', (req, res) ->
+  Container.find req.params.name, (container, err) ->
+    if !err
+      res.render 'containers/show', {container: container}
+    else
+      console.log res.status 422
 
 server.listen(process.env.PORT || 3000)

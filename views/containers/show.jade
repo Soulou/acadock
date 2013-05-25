@@ -1,0 +1,23 @@
+doctype 5
+html(lang="fr")
+  head
+    title= "Container" + container.name
+
+    != js("zepto")
+    != js("application")
+    != js("Chart")
+    != css("application")
+  
+    body
+      h1="Acadock " + containers.name + "Container"
+
+      ul#containers
+        each container in containers
+
+          li= "ID " + container.id
+          li= "Name " + container.Hostname
+          li= "Created " + container.created
+          li= "Image " + container.image
+          li= "Status " + container.status
+          li= "CMD " + container.cmd
+
