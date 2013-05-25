@@ -1,6 +1,5 @@
 request = require 'request'
 endpoints = require '../endpoints'
-Container = require '../models/container'
 
 module.exports = (socket, name) ->
   request.get
