@@ -12,14 +12,11 @@ html(lang="fr")
 
     ul#containers
       each container in containers
-        li.container
-          = container.id
-        li.container
-          = container.image
-        li.container
-          = container.created
-        li.container
-          = container.status
+        .info
+          li= "ID " + container.id
+          li= "Image" + container.image
+          li= "Created" + container.created
+          li= "Status" +  container.status
     div
       button#create-container-btn Create container
 
