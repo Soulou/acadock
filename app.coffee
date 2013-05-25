@@ -17,6 +17,7 @@ websocket = require './lib/websocket'
 
 
 app.get '/', (req, res) ->
+  console.log("List all containers")
   Container.findAll (containers, err) ->
     if !err
       res.render 'index.jade', { containers: containers }
@@ -25,9 +26,11 @@ app.get '/', (req, res) ->
       res.send(err)
 
 app.get '/containers/new', (req, res) ->
-    res.render 'containers/new.jade'
+  console.log("Create container")
+  res.render 'containers/new.jade'
 
 app.post '/containers/create', (req,res) ->
+  console.log("Create container")
   if !req.params.container
     res.status 422
     res.end()
@@ -36,9 +39,20 @@ app.post '/containers/create', (req,res) ->
       if !container
         res.redirect('/containers/new')
       else
-        res.redirect('/')
+        res.redirect('/containers/' + container.Id)
+
+app.delete '/containers/:name', (req, res) ->
+  console.log("Delete Container")
+  Container.destroy req.params.name, (err) ->
+    if !err
+      res.status(200)
+      res.end()
+    else
+      res.status(422)
+      res.end()
 
 app.get '/containers/:name', (req, res) ->
+  console.log("Inspect container")
   websocket io, req.params.name
   Container.find req.params.name, (container, err) ->
     if !err
@@ -46,5 +60,14 @@ app.get '/containers/:name', (req, res) ->
     else
       res.status 422
       res.end(err)
+
+app.get '/containers/:name/attach', (req, res) ->
+  console.log("Attach container")
+  Container.attach req.params.name, res
+
+app.all "*", (req, res) ->
+  console.log(req.method + req.path)
+  res.end()
+
 
 server.listen(process.env.PORT || 3000)
