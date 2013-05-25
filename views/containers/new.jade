@@ -10,13 +10,18 @@ html(lang="fr")
   body 
     h1 Acadock -- New Container
   .form-container
-    form(action ='/containers/create')
-      div(data-role ='fieldcontain')
-        label(for = 'Hostname') Hostname
-          input(id = 'Hostname', type='text', value = '', placeholer ='Hostname', name ='Hostname')
-      div#user(data-role = 'fieldcontain')
-        label(for = 'User') User
-          input(id = 'User', type='text', valur = '', name='User')
-      div#comd(data-role = 'fieldcontain' )
-        label(for = 'Command') Command
-          input(id = 'Hostname', type = 'text' , value)
+    form(method='post', action='/containers/create')
+      div#comd
+        label(for='command') Command*
+          input(id='command', type='text', name='container[command]')
+
+      div#hostname
+        label(for='hostname') Hostname
+          input(id='hostname', type='text', placeholer='Hostname', name='container[hostname]')
+
+      div#user
+        label(for='user') User
+          input(id='user', type='text', name='container[user]')
+
+      input(type='submit', value="Create container")
+

@@ -4,17 +4,18 @@ request = require "request"
 
 
 class Container
-  constructor: (id, image, status, created, user, hostname, command) ->
-    @id = id
-    @image = image
-    @status = status
-    @created = new Date parseInt(created)
-    @user = user
-    @hostname = hostname
-    @command = command
+  constructor: (params) ->
+    @id = params[id]
+    @image = params[image]
+    @status = params[status]
+    @created = new Date parseInt(params[created])
+    @user = params[user]
+    @hostname = params[hostname]
+    @command = params[command]
 
   @findAll: (cb) ->
-    request.get Docker.getUrl("list"),
+    request.get
+      url: Docker.getUrl "list"
       (err, response, body) ->
         if response.statusCode != 200
           cb(null, err)

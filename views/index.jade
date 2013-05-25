@@ -4,11 +4,12 @@ html(lang="fr")
     title Acadock
     != js("zepto")
     != js("application")
-    != js("form")
     != css("application")
     
   body
     h1 Acadock
+      a(href="/containers/new")
+        button Create container
 
     ul#containers
       each container in containers
@@ -17,6 +18,4 @@ html(lang="fr")
           li= "Image" + container.image
           li= "Created" + container.created
           li= "Status" +  container.status
-    div
-      a(href="/containers/new") Create container
 
