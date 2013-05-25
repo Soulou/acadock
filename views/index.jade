@@ -2,9 +2,11 @@ doctype 5
 html(lang="fr")
   head
     title Acadock
+    != js("zepto")
     != js("application")
+    != js("form")
     != css("application")
-
+    
   body
     h1 Acadock
 
@@ -19,6 +21,7 @@ html(lang="fr")
         li.container
           = container.status
     div
-      form(action=docker.getUrl("create"), method='POST')
+      form#create-form(action=docker.getUrl("create"), method='POST')
         input(type='submit',value='Create container')
+
 

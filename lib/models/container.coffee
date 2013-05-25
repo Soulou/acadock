@@ -21,7 +21,7 @@ class Container
             new Container container.Id, container.Image, container.Status, container.Created
           cb(containers, null)
   @create: (cb) ->
-    request.get Docker.getUrl("create"),
+    request.post Docker.getUrl("create"),
       (err, response, body) ->
         if response.statusCode != 200
           cb(null, err)
