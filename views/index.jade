@@ -4,6 +4,7 @@ html(lang="fr")
     title Acadock
     != js("application")
     != css("application")
+
   body
     h1 Acadock
 
@@ -11,4 +12,8 @@ html(lang="fr")
       each container in containers
         li.container
           = container.id
+        li.container
+          = container.image
+        li.container
+          = container.status
 

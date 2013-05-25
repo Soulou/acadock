@@ -4,8 +4,10 @@ request = require "request"
 
 
 class Container
-  constructor: (id) ->
+  constructor: (id, image, status)->
     @id = id
+    @image = image
+    @status = status
 
   @findAll: (cb) ->
     request.get Docker.getUrl("list"),
@@ -15,8 +17,7 @@ class Container
         else
           docker_containers = JSON.parse(body)
           containers = _.map docker_containers, (container) ->
-            console.log(container)
-            new Container container.Id
+            new Container container.Id, container.Image, container.Status
           cb(containers, null)
 
 module.exports = Container

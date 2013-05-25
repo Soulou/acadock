@@ -1,6 +1,6 @@
 docker_info = {
-  "url" : "http://localhost",
-  "port" : "4243",
+  "url" : "http://" + process.env.DOCKER_HOST,
+  "port" : process.env.DOCKER_PORT,
   "endpoints" : {
     "list" : "/containers/ps?all=1",
     "create" : "/containers/create"
