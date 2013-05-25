@@ -17,7 +17,11 @@ html(lang="fr")
       li= "Image " + container.Image
       li= "CMD " + container.Config.Cmd
 
-
-    canvas#chartcanvas
-    canvas#chartmemcanvas
+    div 
+      .charts
+        .charts-container
+          p CPU USAGE
+            canvas#chartcanvas
+          p MEMORY USAGE
+            canvas#chartmemcanvas
 

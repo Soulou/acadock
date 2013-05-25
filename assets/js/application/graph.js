@@ -2,13 +2,13 @@ $(function() {
     var smoothiecpu = new SmoothieChart({minValue: 0.0, 
                                         maxValue: 100.0,
                                         millisPerPixel:50,
-                                        grid:{strokeStyle:'#4f4f4f',
+                                        grid:{strokeStyle:'#369CD4',
                                         sharpLines:true, millisPerLine:10000}
     });
     var smoothiemem = new SmoothieChart({minValue: 0.0,
                                          maxValue: 128000000.0,
                                          millisPerPixel:50,
-                                         grid:{strokeStyle: '#4f4f4f',
+                                         grid:{strokeStyle: '#992E35',
                                          sharpLines:true, millisPerLine:10000}
     });
 
