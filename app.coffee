@@ -21,6 +21,8 @@ app.get '/', (req, res) ->
     else
       res.status(400)
       res.send(err)
+app.get '/containers/new', (req, res) ->
+    res.render 'containers/new.jade'
 
 app.post '/containers/create', (req,res) ->
   request.post docker.getUrl("create"),

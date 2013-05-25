@@ -1,0 +1,22 @@
+doctype 5
+html(lang="fr")
+  head
+    title Acadock -- New Container
+    != js("zepto")
+    != js("application")
+    != js("form")
+    != css("application")
+
+  body 
+    h1 Acadock -- New Container
+  .form-container
+    form(action ='/containers/create')
+      div(data-role ='fieldcontain')
+        label(for = 'Hostname') Hostname
+          input(id = 'Hostname', type='text', value = '', placeholer ='Hostname', name ='Hostname')
+      div#user(data-role = 'fieldcontain')
+        label(for = 'User') User
+          input(id = 'User', type='text', valur = '', name='User')
+      div#comd(data-role = 'fieldcontain' )
+        label(for = 'Command') Command
+          input(id = 'Hostname', type = 'text' , value)

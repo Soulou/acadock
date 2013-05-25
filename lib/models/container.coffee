@@ -9,6 +9,9 @@ class Container
     @image = image
     @status = status
     @created = new Date parseInt(created)
+    @user = user
+    @hostname = hostname
+    @command = command
 
   @findAll: (cb) ->
     request.get Docker.getUrl("list"),
@@ -28,7 +31,7 @@ class Container
         else
           docker_containers = JSON.parse(body)
           containers = _.map docker_containers, (container) ->
-          new Container container.Id
+          new Container container.Hostname, container.Command
           cb(containers,null)
 
 module.exports = Container
