@@ -34,11 +34,13 @@ app.post '/containers/create', (req,res) ->
         res.redirect('/containers/new')
       else
         res.redirect('/')
+
 app.get '/containers/:name', (req, res) ->
   Container.find req.params.name, (container, err) ->
     if !err
-      res.render 'containers/show', {container: container}
+      res.render 'containers/show.jade', {container: container}
     else
-      console.log res.status 422
+      res.status 422
+      res.end(err)
 
 server.listen(process.env.PORT || 3000)

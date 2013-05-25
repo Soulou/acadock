@@ -1,23 +1,17 @@
 doctype 5
 html(lang="fr")
   head
-    title= "Container" + container.name
-
-    != js("zepto")
+    title= "Container" + container.Config.Hostname
     != js("application")
-    != js("Chart")
     != css("application")
   
     body
-      h1="Acadock " + containers.name + "Container"
+      h1="Acadock " + container.Config.Hostname + " Container"
 
-      ul#containers
-        each container in containers
-
-          li= "ID " + container.id
-          li= "Name " + container.Hostname
-          li= "Created " + container.created
-          li= "Image " + container.image
-          li= "Status " + container.status
-          li= "CMD " + container.cmd
+      ul.container-info#container-config
+        li= "ID " + container.Id
+        li= "Name " + container.Config.Hostname
+        li= "Created " + container.Created
+        li= "Image " + container.Image
+        li= "CMD " + container.Config.Cmd
 

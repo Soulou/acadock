@@ -8,7 +8,7 @@ class Container
       url: Docker.getUrl "inspect", name
       (err, response, body) ->
         if response.statusCode != 200
-          cb null, err
+          cb null, body
         else
           docker_container = JSON.parse(body)
           cb docker_container, null
@@ -18,7 +18,7 @@ class Container
       url: Docker.getUrl "list"
       (err, response, body) ->
         if response.statusCode != 200
-          cb null, err
+          cb null, body
         else
           docker_containers = JSON.parse(body)
           cb(docker_containers, null)
