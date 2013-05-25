@@ -2,16 +2,18 @@ doctype 5
 html(lang="fr")
   head
     title= "Container" + container.Config.Hostname
-    != js("application")
     != css("application")
+    script(type="text/javascript", src='/socket.io/socket.io.js')
+    != js("application")
+    != js("websocket/show")
   
-    body
-      h1="Acadock " + container.Config.Hostname + " Container"
+  body
+    h1="Acadock " + container.Config.Hostname + " Container"
 
-      ul.container-info#container-config
-        li= "ID " + container.Id
-        li= "Name " + container.Config.Hostname
-        li= "Created " + container.Created
-        li= "Image " + container.Image
-        li= "CMD " + container.Config.Cmd
+    ul.container-info#container-config
+      li= "ID " + container.Id
+      li= "Name " + container.Config.Hostname
+      li= "Created " + container.Created
+      li= "Image " + container.Image
+      li= "CMD " + container.Config.Cmd
 

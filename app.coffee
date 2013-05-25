@@ -12,6 +12,9 @@ io = require('socket.io').listen server
 
 Container = require './lib/models/container'
 urlHelper = require './lib/helpers/urlHelper'
+websocket = require './lib/websocket'
+
+
 app.get '/', (req, res) ->
   Container.findAll (containers, err) ->
     if !err
@@ -35,6 +38,7 @@ app.post '/containers/create', (req,res) ->
         res.redirect('/')
 
 app.get '/containers/:name', (req, res) ->
+  websocket io, req.params.name
   Container.find req.params.name, (container, err) ->
     if !err
       res.render 'containers/show.jade', {container: container}
