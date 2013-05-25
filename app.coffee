@@ -10,13 +10,12 @@ io = require('socket.io').listen server
 
 # Acadock classes
 
-docker = require './lib/docker'
 Container = require './lib/models/container'
 urlHelper = require './lib/helpers/urlHelper'
 app.get '/', (req, res) ->
   Container.findAll (containers, err) ->
     if !err
-      res.render 'index.jade', { containers: containers, urlHelper: urlHelper, docker: docker}
+      res.render 'index.jade', { containers: containers }
     else
       res.status 400
       res.send(err)
