@@ -27,40 +27,37 @@ li.container-info
 form
   margin-top 40
 
-.charts
+#real-time-container
   margin-left auto
   margin-right auto
   margin-top 20px
   margin-bottom 40px
   width: 78%
-  height: 500px
+  height: 100%
   background-color: white
-
-.charts-container
-  margin 0 auto
-  padding-top 25px
-  width 100%
-  p
-    display inline
-    width 50%
-    padding-left 27%
-  .smoothie-graph
-    width 90%
+  pre#container-attachment
     margin-left auto
     margin-right auto
-    margin-top 35px
+    background-color #002b36
+    color #eee8d5
+    padding 10px 10px 10px 25px
+    width 75%
+    max-height 400px
+    overflow-y scroll
+    overflow-x hidden
 
-    .cpu-graph
-      padding-top 50px
-      padding-left 5%
-      margin-right 4%
+.charts
+  .charts-container
+    padding-top 25px
+    padding-left 15%
+    .smoothie-graph
       display inline
-
-    .mem-graph
-      padding-top 50px
-      padding-right 5%
-      margin-left 4%
-      display inline
+      .cpu-graph
+        display inline-block
+        margin-right 40px
+      .mem-graph
+        display inline-block
+        margin-left 40px
     
 form
   margin-top 40px
@@ -70,11 +67,3 @@ span.pull-right
   position relative
   bottom 3px
 
-pre#container-attachment
-  background-color #002b36
-  color #eee8d5
-  padding 10px 10px 10px 25px
-  width 75%
-  max-height 400px
-  overflow-y scroll
-  overflow-x hidden
