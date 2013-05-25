@@ -1,14 +1,12 @@
 $ ->
-  form = $('#create-form')
-  form.on 'submit', (event) ->
-    debugger
-    $.ajax ->
+  $('#create-container-btn').on 'click', (event) ->
+    $.ajax
       type: 'POST'
-      url: this.action
+      url: '/containers/create'
       dataType: 'json'
-      success(data) ->
-          console.log(data)
+      success: (data) ->
+        console.log "Success : "
+        console.log(data)
       error: (xhr, type) ->
-        alert("Ajax error")
-    event.preventDefault()
-  
+        console.log "Error : "
+        console.log xhr
