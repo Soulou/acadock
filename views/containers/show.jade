@@ -10,7 +10,10 @@ html(lang="fr")
   body
     .title
       h1="Acadock " + container.Config.Hostname + " Container"
-
+    
+    div#gobackbtn
+      .gobtn
+        a(href="/") Menu
     ul.container-info#container-config
       li ID&nbsp;
         span#container-id=container.Id
@@ -37,4 +40,6 @@ html(lang="fr")
               canvas#chartmemcanvas
       pre#container-attachment
         code
+
+
 

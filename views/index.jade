@@ -6,15 +6,14 @@ html(lang="fr")
     != js("application")
     != css("application")
   body
-    h1 Acadock
-      a(href="/containers/new")
-        button Create container
+    .title
+      h1 Acadock
 
     input(type="text", class="cli", id="cli", placeholder="Your Command")
     ul#containers
       each container in containers
 
-        li.container-info
+        li.container-info-light
           span.statuslight
             if container.Status.match(/^Exit.*/)   
               .lightdown

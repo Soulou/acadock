@@ -27,18 +27,55 @@ input.cli
   margin-left 15%
   padding 10px 10px 10px 10px
   border 2px solid #777
+  margin-top 10px
+
+ul#containers
+  padding-left 0px
+
+.gobtn
+  float left
+  position relative
+  top -60px
+  height 40px
+  width 100px
+  padding-top 20px
+  margin-left 10px
+  background-color #A93D40
+  a
+    text-decoration none
+    color white
+    margin-top 20px
+    padding-top 50px
+    padding-left 10px
+    padding-right 10px
+
+.gobtn:visited
+  a
+    color black
+
+.gobtn:hover
+  background-color #AA1520
+  a
+    color white 
 
 .container-info
   list-style none
-  width 76%
-  margin 0 auto
+  width 78%
+  margin auto
   background-color white
-  padding 10px 10px 10px 10px
+  padding 10px 0px 10px 0px
   margin-top 10px
   a
-    color #1B6C8C
+    text-decoration none
+    color black
   li
     padding-bottom 10px
+
+.container-info-light
+  @extend .container-info
+  &:hover
+    border 2px solid #95a5a6
+    color white
 
 form
   margin-top 40
