@@ -52,7 +52,8 @@ class Container
           console.log response.statusCode + " : " + util.inspect(body, false, null)
           cb(null, err)
         else
-          cb(body, null)
+          Container.find body.Id, (container, err) ->
+            cb(container, null)
 
   @destroy: (name, cb) ->
     console.log endpoint.getUrl "destroy", "docker", name
