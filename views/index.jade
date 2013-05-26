@@ -12,7 +12,13 @@ html(lang="fr")
 
     ul#containers
       each container in containers
+
         li.container-info
+          span.statuslight
+            if container.Status.match(/^Exit.*/)   
+              .lightdown
+            else 
+              .lightup
           if container.Hostname
             - containerStr = "Hostname " + container.Hostname
           else

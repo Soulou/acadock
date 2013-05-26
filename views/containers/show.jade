@@ -17,6 +17,12 @@ html(lang="fr")
       li= "Created " + container.Created
       li= "Image " + container.Image
       li= "CMD " + container.Config.Cmd
+      li= "Status"
+        span.statuslight
+          if !container.State.Running
+            .lightdown
+          else 
+            .lightup
 
     div#real-time-container 
       .charts
