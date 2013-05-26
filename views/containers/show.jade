@@ -21,6 +21,8 @@ html(lang="fr")
       li= "Created " + container.Created
       li= "Image " + container.Image
       li= "CMD " + container.Config.Cmd
+      li= "IP " + container.NetworkSettings.IpAddress
+      li= "Port binding " + _.map(container.NetworkSettings.PortMapping, function(k, v) { return "" + k + " → " + v })
       li= "Status"
         span.statuslight
           if !container.State.Running

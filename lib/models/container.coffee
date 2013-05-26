@@ -35,14 +35,14 @@ class Container
         "Memory": 0
         "MemorySwap": 0
         "AttachStdin": false
-        "AttachStdout": false
-        "AttachStderr": false
-        "PortSpecs": null
+        "AttachStdout": true
+        "AttachStderr": true
+        "PortSpecs": if params.port then [ params.port ] else null
         "Tty": false
         "OpenStdin": false
         "StdinOnce": false
         "Env": null
-        "Cmd": [params.command]
+        "Cmd": params.command.split(' ')
         "Dns": null
         "Image": "base"
         "Volumes": {}
@@ -53,7 +53,10 @@ class Container
           cb(null, err)
         else
           Container.find body.Id, (container, err) ->
-            cb(container, null)
+            request.post
+              url: endpoint.getUrl "start", "docker", container.Id
+              (err, response, body) ->
+                cb(container, null)
 
   @destroy: (name, cb) ->
     console.log endpoint.getUrl "destroy", "docker", name

@@ -10,6 +10,7 @@ html(lang="fr")
       h1 Acadock
 
     input(type="text", class="cli", id="cli", placeholder="Your Command")
+    input(type="text", class="port", id="port", placeholder="Port")
     ul#containers
       each container in containers
 
@@ -26,6 +27,7 @@ html(lang="fr")
           a(href="/containers/" + container.Id)
             = containerStr
           span.pull-right
+            span.command= container.Command.replace(/^\s+|\s+$/g, '')
             a(class="container-destroy", href="/containers/" + container.Id)
               button Destroy
 

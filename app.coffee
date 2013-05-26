@@ -9,6 +9,8 @@ server = http.createServer app
 io = require('socket.io').listen server
 io.set "log level", 1
 
+_ = require "underscore"
+
 # Acadock classes
 
 Container = require './lib/models/container'
@@ -57,7 +59,7 @@ app.get '/containers/:name', (req, res) ->
   websocket io, req.params.name
   Container.find req.params.name, (container, err) ->
     if !err
-      res.render 'containers/show.jade', {container: container}
+      res.render 'containers/show.jade', {container: container, _: _}
     else
       res.status 422
       res.end(err)

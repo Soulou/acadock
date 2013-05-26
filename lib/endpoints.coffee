@@ -16,7 +16,8 @@ endpoints_info = {
       "inspect" : "/containers/#NAME#/json",
       "create" : "/containers/create",
       "destroy" : "/containers/#NAME#",
-      "attach" : "/containers/#NAME#/attach?logs=1&stream=0&stdout=1&stderr=1"
+      "attach" : "/containers/#NAME#/attach?logs=1&stream=0&stdout=1&stderr=1",
+      "start" : "/containers/#NAME#/start"
     }
   }
 }
