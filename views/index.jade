@@ -10,13 +10,14 @@ html(lang="fr")
       a(href="/containers/new")
         button Create container
 
+    input(type="text", class="cli", id="cli", placeholder="Your Command")
     ul#containers
       each container in containers
         li.container-info
           if container.Hostname
             - containerStr = "Hostname " + container.Hostname
           else
-            - containerStr = "ID " + container.Id 
+            - containerStr = "ID " + container.Id.substring(0,12)
           a(href="/containers/" + container.Id)
             = containerStr
           span.pull-right

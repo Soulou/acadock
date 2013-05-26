@@ -36,10 +36,11 @@ app.post '/containers/create', (req,res) ->
     res.end()
   else
     Container.create req.body.container, (container, err) ->
-      if !container
-        res.redirect('/containers/new')
+      if container
+        res.send(container)
       else
-        res.redirect('/containers/' + container.Id)
+        res.status(422)
+        res.end()
 
 app.delete '/containers/:name', (req, res) ->
   console.log("Delete Container")
