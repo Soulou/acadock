@@ -5,7 +5,6 @@ $ ->
   $("#container-attachment").on "scroll", (event) ->
     _this.canScroll = false
     if this.scrollTop == this.scrollHeight - this.offsetHeight
-      debugger
       _this.canScroll = true
       
   @updateOutputView = (text) ->
