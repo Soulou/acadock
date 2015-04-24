@@ -69,7 +69,7 @@ app.get '/containers/:name/attach', (req, res) ->
   Container.attach req.params.name, res
 
 app.all "*", (req, res) ->
-  console.log(req.method + req.path)
+  console.log(req.method + " " + req.path)
   res.end()
 
 

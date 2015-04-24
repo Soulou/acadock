@@ -1,7 +1,7 @@
 {
   "name": "acadock",
   "version": "0.0.1",
-  "description": "Maxime - Leo",
+  "description": "Acadock container monitoring",
   "main": "server.js",
   "dependencies": {
     "express": "~3.1.0",
@@ -18,8 +18,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
-    "type": "git",
-    "url": "git://github.com/barodeur/ragots.git"
+    "type": "git"
   },
   "engines": {
     "node": "0.8.x",

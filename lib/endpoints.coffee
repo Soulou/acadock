@@ -1,16 +1,17 @@
 endpoints_info = {
 
   "lxcresources" : {
-    "url" : "http://" + process.env.LXC_RESOURCES_HOST,
-    "port" : process.env.LXC_RESOURCES_PORT,
+    "url" : "http://" + (process.env.LXC_RESOURCES_HOST || "localhost"),
+    "port" : (process.env.LXC_RESOURCES_PORT || 4244),
     "endpoints" : {
+      "net" : "/containers/#NAME#/net",
       "mem" : "/containers/#NAME#/mem",
       "cpu" : "/containers/#NAME#/cpu"
     }
   },
   "docker" : {
-    "url" : "http://" + process.env.DOCKER_HOST,
-    "port" : process.env.DOCKER_PORT,
+    "url" : "http://" + (process.env.DOCKER_HOST || "localhost"),
+    "port" : (process.env.DOCKER_PORT || 4243),
     "endpoints" : {
       "list" : "/containers/ps?all=1",
       "inspect" : "/containers/#NAME#/json",

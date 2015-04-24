@@ -7,6 +7,9 @@ $ ->
   socket.on 'cpu_usage', (data) =>
     if data.name == @id
       updateCpuChartData(data.value)
+  socket.on 'net_usage', (data) =>
+    if data.name == @id
+      updateNetChartData(JSON.parse(data.value))
   socket.on 'output', (data) =>
     if data.name == @id
       updateOutputView(data.value)
